@@ -16,6 +16,7 @@ buildscript {
 }
 
 repositories {
+
     mavenCentral()
     maven {
         url "https://plugins.gradle.org/m2/"
@@ -27,9 +28,17 @@ dependencies {
     compile group: 'log4j', name: 'log4j', version: '1.2.15', ext: 'jar'
     compile 'org.glassfish.jersey.core:jersey-server:2.22.2'
     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.22.2'
-
-
-
+    compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.22.2'
+    /** https://jersey.java.net/documentation/latest/spring.html **/
+    /** http://www.codingpedia.org/ama/restful-web-services-example-in-java-with-jersey-spring-and-mybatis/ **/
+    compile ('org.glassfish.jersey.ext:jersey-spring3:2.22.2'){
+        exclude module: 'spring-core'
+        exclude module: 'spring-web'
+        exclude module: 'spring-beans'
+    }
+    compile 'org.springframework:spring-web:4.1.7.RELEASE'
+    compile 'org.springframework:spring-beans:4.1.7.RELEASE'
+    compile 'org.springframework:spring-core:4.1.7.RELEASE'
 
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
